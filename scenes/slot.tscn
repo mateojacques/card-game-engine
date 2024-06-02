@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ikb3umxnxwu5"]
+
+[ext_resource type="Script" path="res://scripts/slot.gd" id="1_t11i2"]
+[ext_resource type="Texture2D" uid="uid://cd5s0oia06my7" path="res://assets/sprites/slot_placeholder.png" id="2_vywcf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gcic"]
+size = Vector2(353, 529)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jq1bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vywcf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Slot" type="Node2D"]
+z_index = 1
+script = ExtResource("1_t11i2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_4gcic")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jq1bn")
+animation = &"idle"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

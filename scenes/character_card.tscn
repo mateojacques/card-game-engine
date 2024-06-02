@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch5j7q02b6j52"]
+
+[ext_resource type="Script" path="res://scripts/character_card.gd" id="2_2y1ma"]
+[ext_resource type="Texture2D" uid="uid://bqcimyglje321" path="res://assets/sprites/character_card.png" id="2_etjr3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi0k4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_etjr3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwsyq"]
+size = Vector2(351, 532)
+
+[node name="CharacterCard" type="Node2D"]
+z_index = 5
+script = ExtResource("2_2y1ma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mi0k4")
+animation = &"idle"
+
+[node name="CharacterCardArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterCardArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_cwsyq")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="area_entered" from="CharacterCardArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="CharacterCardArea" to="." method="_on_area_2d_input_event"]
