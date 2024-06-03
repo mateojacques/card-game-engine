@@ -36,7 +36,7 @@ var character_card_ref: CharacterCard = null;
 var disable_interaction = false;
 var game_manager_ref = null;
 var is_dragging = false;
-var last_row_created = 0;
+var last_row_created = -1;
 var mouse_is_hovering_slot = false;
 var slot_refs = [];
 var test_deck = {
@@ -200,7 +200,79 @@ var test_deck = {
 		"id": "card_10",
 		"label": "Card 6",
 		"description": "Card 6 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	"8": [
+		{
+		"id": "card_0",
+		"label": "Card 6",
+		"description": "Card 6 Description",
 		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_1",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_2",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	
+	"9": [
+		{
+		"id": "card_4",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_5",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_6",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	"10": [
+		{
+		"id": "card_7",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_9",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	"11": [
+		{
+		"id": "card_11",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "middle",
 		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],

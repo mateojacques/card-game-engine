@@ -28,7 +28,7 @@ func _on_area_2d_mouse_exited():
 func handle_place_card_in_slot():
 	Global.current_active_slot = slot.index;
 	# Send "placed card in x slot" signal??
-	if Global.last_row_created != Global.test_deck.size():
+	if Global.last_row_created + 1 != Global.test_deck.size():
 		Global.game_manager_ref.create_board_cards();
 	# Set character card horizontal position to this slot horizontal position
 	# The vertical position always remains the same as the initial one for the character
