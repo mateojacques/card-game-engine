@@ -38,5 +38,5 @@ func _unhandled_input(event):
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	# Drag mechanic
-	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+	if event is InputEventMouseButton and event.button_index == 1 and event.pressed and not Global.disable_interaction:
 		Global.is_dragging = true;

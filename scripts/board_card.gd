@@ -9,8 +9,11 @@ var card_info = {
 	"animations": { # Animation names for reference when playing an animation before an action
 		"fade_in": null
 	},
-	"slot_index": null # Index of the slot this card is currently in
+	"slot_index": null, # Index of the slot this card is currently in
+	"current_slot_position": null # Current slot position for the card
 };
+
+var t = 0.0;
 
 func initialize(id: String, label: String, description: String, _idle_sprite: Texture2D):
 	card_info.id = id;
@@ -25,6 +28,15 @@ func initialize(id: String, label: String, description: String, _idle_sprite: Te
 func _process(delta):
 	# If the slot this card is in is hovered while dragging, lower brightness of the card.
 	modulate.v = 0.7 if Global.current_hovered_slot == card_info.slot_index and Global.is_dragging else 1.0;
+
+func _physics_process(delta):
+	if card_info.current_slot_position and position != card_info.current_slot_position:
+		t += delta * 0.4;
+		position = position.lerp(card_info.current_slot_position, t);
+	else:
+		card_info.current_slot_position = null;
+		t = 0.0;
+		Global.disable_interaction = false;
 
 func handle_fade_in_animation():
 	# Store fade in animation name with random id

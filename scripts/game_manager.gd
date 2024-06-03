@@ -18,7 +18,7 @@ func initialize_character_card():
 	add_child(Global.character_card_ref);
 
 func create_board_cards():
-	print(" ");
+	Global.disable_interaction = true;
 	var refs = Global.board_card_refs;
 	var row_cards = Global.test_deck[str(Global.last_row_created)];
 	if Global.last_row_created > 1:
@@ -28,20 +28,20 @@ func create_board_cards():
 			card.queue_free();
 		# Update refs array
 		refs = refs.slice(previous_row.size(), refs.size());
-		for card in refs:
-			print(card.card_info.id);
+		# Reposition previous row cards
 		for card_index in previous_row.size():
 			var slot_index = get_slot_id_by_position_and_row(previous_row[card_index].position, 0 if refs.find(refs[card_index], 0) <= previous_row.size() - 1 else 1);
 			refs[card_index].card_info.slot_index = slot_index;
-			refs[card_index].position = Vector2(Global.slot_positions[str(slot_index)].x, Global.slot_positions[str(slot_index)].y);
+			refs[card_index].card_info.current_slot_position = Vector2(Global.slot_positions[str(slot_index)].x, Global.slot_positions[str(slot_index)].y);
 	for card in row_cards:
 		var board_card = board_card_scene.instantiate();
 		refs.append(board_card);
 		board_card.initialize(card.id, card.label, card.description, card.idle_sprite);
 		var slot_index = get_slot_id_by_position_and_row(card.position, 0 if refs.find(board_card, 0) <= row_cards.size() - 1 else 1);
 		board_card.card_info.slot_index = slot_index;
-		board_card.position = Vector2(Global.slot_positions[str(slot_index)].x, Global.slot_positions[str(slot_index)].y);
+		board_card.position = Vector2(Global.slot_positions[str(slot_index)].x, Global.slot_positions[str(slot_index)].y - 700);
 		add_child(board_card);
+		board_card.card_info.current_slot_position = Vector2(Global.slot_positions[str(slot_index)].x, Global.slot_positions[str(slot_index)].y);
 	Global.last_row_created += 1;
 	Global.board_card_refs = refs;
 
