@@ -25,78 +25,146 @@ const slot_positions = {
 
 # VARIABLES
 
+var board_card_refs = [];
 var current_active_slot = -1;
+var current_hovered_slot = null;
 var character_card_ref: CharacterCard = null;
+var game_manager_ref = null;
+var is_dragging = false;
 var last_row_created = 0;
 var mouse_is_hovering_slot = false;
 var slot_refs = [];
 var test_deck = {
+	# First row has to have 3 cards
 	"0": [
 		{
-		"label": "card_1",
+		"id": "card_0",
+		"label": "Card 0",
+		"description": "Card 0 Description",
 		"position": "start",
 		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-		"label": "card_2",
+		"id": "card_1",
+		"label": "Card 1",
+		"description": "Card 1 Description",
 		"position": "middle",
-		"idle_sprite": load("res://assets/sprites/slot_2.png"),
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-		"label": "card_3",
+		"id": "card_2",
+		"label": "Card 2",
+		"description": "Card 2 Description",
 		"position": "end",
-		"idle_sprite": load("res://assets/sprites/slot_3.png"),
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],
 	"1": [
 		{
-			"label": "card_4",
-			"position": "start",
-			"idle_sprite": load("res://assets/sprites/slot_4.png"),
+		"id": "card_3",
+		"label": "Card 3",
+		"description": "Card 3 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-			"label": "card_5",
-			"position": "middle",
-			"idle_sprite": load("res://assets/sprites/slot_5.png"),
+		"id": "card_4",
+		"label": "Card 4",
+		"description": "Card 4 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-			"label": "card_6",
-			"position": "end",
-			"idle_sprite": load("res://assets/sprites/slot_6.png"),
+		"id": "card_5",
+		"label": "Card 5",
+		"description": "Card 5 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],
 	"2": [
 		{
-			"label": "card_7",
-			"position": "start",
-			"idle_sprite": load("res://assets/sprites/slot_7.png"),
+		"id": "card_6",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-			"label": "card_8",
-			"position": "middle",
-			"idle_sprite": load("res://assets/sprites/slot_8.png"),
+		"id": "card_7",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 		{
-			"label": "card_9",
-			"position": "end",
-			"idle_sprite": load("res://assets/sprites/slot_9.png"),
+		"id": "card_8",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],
 	"3": [
 		{
-			"label": "card_10",
-			"position": "start",
-			"idle_sprite": load("res://assets/sprites/slot_10.png"),
+		"id": "card_9",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
-		#{
-			#"label": "card_11",
-			#"position": "middle",
-			#"idle_sprite": load("res://assets/sprites/slot_11.png"),
-		#},
 		{
-			"label": "card_12",
-			"position": "end",
-			"idle_sprite": load("res://assets/sprites/slot_12.png"),
+		"id": "card_10",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_11",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	"4": [
+		{
+		"id": "card_0",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_1",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "middle",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_2",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+	],
+	"5": [
+		{
+		"id": "card_3",
+		"label": "Card 6",
+		"description": "Card 6 Description",
+		"position": "start",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
+		},
+		{
+		"id": "card_5",
+		"label": "Card 8",
+		"description": "Card 8 Description",
+		"position": "end",
+		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],
 };

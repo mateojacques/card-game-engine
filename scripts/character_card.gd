@@ -1,8 +1,6 @@
 extends Node2D
 class_name CharacterCard
 
-var is_dragging = false;
-
 var card_info = {
 	"id": null,
 	"label": null,
@@ -28,17 +26,17 @@ func initialize(id: int, label: String, idle_sprite: Texture2D):
 func _physics_process(delta):
 	# The card always snap back to its current slot position with a seamless transition
 	t += delta * 0.4;
-	if is_dragging:
+	if Global.is_dragging:
 		global_position = get_global_mouse_position();
 	else:
 		position = position.lerp(card_info.current_slot_position, t);
 
 func _unhandled_input(event):
-	if is_dragging and event.is_action_released("start_drag"):
-		is_dragging = false;
+	if Global.is_dragging and event.is_action_released("start_drag"):
+		Global.is_dragging = false;
 		t = 0.0;
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	# Drag mechanic
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		is_dragging = true;
+		Global.is_dragging = true;
