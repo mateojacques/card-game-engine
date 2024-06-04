@@ -31,7 +31,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if card_info.current_slot_position and position != card_info.current_slot_position:
-		t += delta * 0.4;
+		t += delta * Global.lerp_speed;
 		position = position.lerp(card_info.current_slot_position, t);
 	else:
 		card_info.current_slot_position = null;

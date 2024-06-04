@@ -25,7 +25,7 @@ func initialize(id: int, label: String, idle_sprite: Texture2D):
 
 func _physics_process(delta):
 	# The card always snap back to its current slot position with a seamless transition
-	t += delta * 0.4;
+	t += delta * Global.lerp_speed;
 	if Global.is_dragging:
 		global_position = get_global_mouse_position();
 	else:

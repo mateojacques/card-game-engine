@@ -14,7 +14,7 @@ func initialize(index: int, id: String):
 
 func _process(_delta):
 	 # If I dropped the card on a valid slot:
-	if is_pickable_slot() and is_hovered and not Global.is_dragging:
+	if is_pickable_slot() and is_hovered and not Global.is_dragging and slot.current_card_ref:
 		handle_place_card_in_slot();
 
 func _on_area_2d_mouse_entered():
@@ -28,8 +28,7 @@ func _on_area_2d_mouse_exited():
 func handle_place_card_in_slot():
 	Global.current_active_slot = slot.index;
 	# Send "placed card in x slot" signal??
-	if Global.last_row_created + 1 != Global.test_deck.size():
-		Global.game_manager_ref.create_board_cards();
+	Global.game_manager_ref.handle_board_progression();
 	# Set character card horizontal position to this slot horizontal position
 	# The vertical position always remains the same as the initial one for the character
 	var new_position = Vector2(position.x,Global.character_card_base_info.position.y);

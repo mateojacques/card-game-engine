@@ -18,6 +18,10 @@ const character_card_base_info = {
 	}
 }
 
+const initial_rows = 2;
+
+const lerp_speed = 0.5;
+
 const slot_positions = {
 	"0": { "x": -237 - (card_width / 2), "y": 26 + (card_height / 2) },
 	"1": { "x": 0, "y": 26 + (card_height / 2) },
@@ -227,7 +231,7 @@ var test_deck = {
 		"idle_sprite": load("res://assets/sprites/slot_1.png"),
 		},
 	],
-	
+
 	"9": [
 		{
 		"id": "card_4",
