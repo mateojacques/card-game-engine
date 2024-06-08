@@ -15,15 +15,17 @@ var card_info = {
 
 var t = 0.0;
 
-func initialize(id: String, label: String, description: String, _idle_sprite: Texture2D):
+func initialize(id: String, label: String, description: String, idle_sprite: Texture2D):
 	card_info.id = id;
 	card_info.label = label;
 	card_info.description = description;
-	if _idle_sprite:
-		card_info.idle_sprite = _idle_sprite;
 	card_info.animated_sprite_ref = $AnimatedSprite2D;
+	card_info.idle_sprite = idle_sprite;
 
-	handle_fade_in_animation();
+	if card_info.id+"_fade_in" in Animations:
+		handle_fade_in_animation();
+	else:
+		handle_idle_animation();
 
 func _process(delta):
 	# If the slot this card is in is hovered while dragging, lower brightness of the card.
@@ -50,3 +52,13 @@ func handle_fade_in_animation():
 	Animations.add_frames_to_animation(frames, card_info.animations.fade_in, card_info.animated_sprite_ref);
 	# Play fade in animation
 	card_info.animated_sprite_ref.play(card_info.animations.fade_in);
+
+func handle_idle_animation():
+	card_info.animated_sprite_ref.sprite_frames.add_animation(card_info.id+"_idle");
+	card_info.animated_sprite_ref.sprite_frames.set_animation_loop(card_info.id+"_idle", false);
+	card_info.animated_sprite_ref.sprite_frames.add_frame(card_info.id+"_idle", card_info.idle_sprite);
+	card_info.animated_sprite_ref.play(card_info.id+"_idle");
+
+
+func _on_animated_sprite_2d_animation_finished():
+	handle_idle_animation();

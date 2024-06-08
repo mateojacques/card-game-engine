@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xmfihbw8wsya" path="res://assets/backgrounds/bg.png" id="1_6f66q"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_vo6t7"]
 [ext_resource type="PackedScene" uid="uid://ch5j7q02b6j52" path="res://scenes/character_card.tscn" id="2_v8hpv"]
-[ext_resource type="Texture2D" uid="uid://bqcimyglje321" path="res://assets/sprites/character_card.png" id="3_6ydf4"]
+[ext_resource type="Texture2D" uid="uid://qp6xnufhh08m" path="res://assets/sprites/zade_idle.png" id="3_vlwti"]
 [ext_resource type="PackedScene" uid="uid://ikb3umxnxwu5" path="res://scenes/slot.tscn" id="4_43jw8"]
 [ext_resource type="PackedScene" uid="uid://d381fctd8lhyr" path="res://scenes/board_card.tscn" id="4_y2pxt"]
 
@@ -12,7 +12,7 @@
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_vo6t7")
 character_card_scene = ExtResource("2_v8hpv")
-character_card_idle_sprite = ExtResource("3_6ydf4")
+character_card_idle_sprite = ExtResource("3_vlwti")
 board_card_scene = ExtResource("4_y2pxt")
 slot_scene = ExtResource("4_43jw8")
 
