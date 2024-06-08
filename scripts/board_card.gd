@@ -30,13 +30,12 @@ func _process(delta):
 	modulate.v = 0.7 if Global.current_hovered_slot == card_info.slot_index and Global.is_dragging else 1.0;
 
 func _physics_process(delta):
-	if card_info.current_slot_position and position != card_info.current_slot_position:
+	if card_info.current_slot_position and card_info.current_slot_position.y - position.y >= 10 :
 		t += delta * Global.lerp_speed;
 		position = position.lerp(card_info.current_slot_position, t);
 	else:
 		card_info.current_slot_position = null;
 		t = 0.0;
-		Global.disable_interaction = false;
 
 func handle_fade_in_animation():
 	# Store fade in animation name with random id

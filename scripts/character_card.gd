@@ -30,13 +30,15 @@ func _physics_process(delta):
 		global_position = get_global_mouse_position();
 	else:
 		position = position.lerp(card_info.current_slot_position, t);
+	if card_info.current_slot_position.y - position.y <= 10:
+		Global.disable_interaction = false;
 
 func _unhandled_input(event):
 	if Global.is_dragging and event.is_action_released("start_drag"):
 		Global.is_dragging = false;
 		t = 0.0;
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	# Drag mechanic
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed and not Global.disable_interaction:
 		Global.is_dragging = true;

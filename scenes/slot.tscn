@@ -1,17 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ikb3umxnxwu5"]
+[gd_scene load_steps=4 format=3 uid="uid://ikb3umxnxwu5"]
 
 [ext_resource type="Script" path="res://scripts/slot.gd" id="1_t11i2"]
-[ext_resource type="Texture2D" uid="uid://cd5s0oia06my7" path="res://assets/sprites/slot_placeholder.png" id="2_vywcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gcic"]
 size = Vector2(353, 529)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jq1bn"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_vywcf")
-}],
+"frames": [],
 "loop": true,
 "name": &"idle",
 "speed": 5.0

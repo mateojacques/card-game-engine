@@ -32,8 +32,6 @@ func handle_place_card_in_slot():
 	# Set character card horizontal position to this slot horizontal position
 	# The vertical position always remains the same as the initial one for the character
 	var new_position = Vector2(position.x,Global.character_card_base_info.position.y);
-	# Lock x axis to the slot x position for better transition
-	Global.character_card_ref.position.x = position.x;
 	# We modify current slot position to know where the card should snap back after placing it (on an valid slot or not)
 	Global.character_card_ref.card_info.current_slot_position = new_position;
 	# End the movement by disabling hovered state until the card is dragged again
